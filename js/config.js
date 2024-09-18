@@ -33,7 +33,7 @@ let config = {
 
 
   // Текст копирайта
-  copyrightText: 'prod bytefend.to',
+  copyrightText: 'get brain.',
   // Цвет копирайта
   copyrightTextColor: '#0000CD',
 
