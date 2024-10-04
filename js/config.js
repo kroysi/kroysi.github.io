@@ -33,7 +33,7 @@ let config = {
 
 
   // Текст копирайта
-  copyrightText: 'миша долбоеб',
+  copyrightText: 'get brain.',
   // Цвет копирайта
   copyrightTextColor: '#0000CD',
 
