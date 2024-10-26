@@ -99,31 +99,29 @@ function init() {
           this.$refs['background-video'].muted = false;
           this.isPlaying = true;
         
-          if (this.isPlaying) {
-            setTimeout(() => {
-              this.titleVisible = true;
+          setTimeout(() => {
+            this.titleVisible = true;
+            awesomeEffect({
+              el: title,
+              text: this.title,
+            });
+
+            if (this.titleEffectInterval) clearInterval(this.titleEffectInterval);
+            this.titleEffectInterval = setInterval(() => {
               awesomeEffect({
                 el: title,
                 text: this.title,
               });
-
-              if (this.titleEffectInterval) clearInterval(this.titleEffectInterval);
-              this.titleEffectInterval = setInterval(() => {
-                awesomeEffect({
-                  el: title,
-                  text: this.title,
-                });
-              }, 2000);
-        
-              if (this.copyrightEffectInterval) clearInterval(this.copyrightEffectInterval);
-              this.copyrightEffectInterval = setInterval(() => {
-                awesomeEffect({
-                  el: document.querySelector('.asif-page-copyright'),
-                  text: this.copyrightText,
-                });
-              }, 2000);
-            }, config.showDelay * 1000);
-          }
+            }, 2000);
+      
+            if (this.copyrightEffectInterval) clearInterval(this.copyrightEffectInterval);
+            this.copyrightEffectInterval = setInterval(() => {
+              awesomeEffect({
+                el: document.querySelector('.asif-page-copyright'),
+                text: this.copyrightText,
+              });
+            }, 2000);
+          }, config.showDelay * 1000);
         },
     
         getSocialLink(type, username) {
