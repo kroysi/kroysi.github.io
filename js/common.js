@@ -49,6 +49,8 @@ function init() {
         copyrightText: config.copyrightText,
         social: config.social,
         isPlaying: false,
+        titleEffectInterval: null,
+        copyrightEffectInterval: null,
         titleColor: config.titleColor,
         titleShadowColor: config.titleShadowColor,
         copyrightTextColor: config.copyrightTextColor,
@@ -82,7 +84,7 @@ function init() {
           }
         }
       },
-    
+
       methods: {
         stopPlay() {
           this.isPlaying = false;
@@ -92,33 +94,36 @@ function init() {
         startPlay() {
           let video = this.$refs['background-video'];
           let title = this.$refs['title'];
-    
+        
           this.$refs['background-video'].play();
           this.$refs['background-video'].muted = false;
           this.isPlaying = true;
-    
-          setTimeout(() => {
-            this.titleVisible = true;
-    
-            awesomeEffect({
-              el: title,
-              text: this.title,
-            });
-    
-            setInterval(() => {
+        
+          if (this.isPlaying) {
+            setTimeout(() => {
+              this.titleVisible = true;
               awesomeEffect({
                 el: title,
                 text: this.title,
-              })
-            }, 2000);
+              });
 
-            setInterval(() => {
-              awesomeEffect({
-                el: document.querySelector('.asif-page-copyright'),
-                text: this.copyrightText,
-              })
-            }, 2000)
-          }, config.showDelay * 1000);
+              if (this.titleEffectInterval) clearInterval(this.titleEffectInterval);
+              this.titleEffectInterval = setInterval(() => {
+                awesomeEffect({
+                  el: title,
+                  text: this.title,
+                });
+              }, 2000);
+        
+              if (this.copyrightEffectInterval) clearInterval(this.copyrightEffectInterval);
+              this.copyrightEffectInterval = setInterval(() => {
+                awesomeEffect({
+                  el: document.querySelector('.asif-page-copyright'),
+                  text: this.copyrightText,
+                });
+              }, 2000);
+            }, config.showDelay * 1000);
+          }
         },
     
         getSocialLink(type, username) {
@@ -128,10 +133,6 @@ function init() {
     
       mounted() {
         let video = this.$refs['background-video'];
-    
-        video.addEventListener('canplay', e => {
-          
-        })
     
         video.addEventListener('ended', e => {
           this.stopPlay();
@@ -167,5 +168,4 @@ function init() {
         },
       }
     })
-
 }
