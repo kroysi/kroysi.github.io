@@ -7,7 +7,7 @@ let config = {
   showDelay: 1.5, 
 
   // Заголовок
-  title: 'acrylic',
+  title: 'kroysi',
 
   // Социальные сети
   social: {
