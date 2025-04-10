@@ -1,44 +1,55 @@
-let url = '/videos/Righthere.mp4';
-
-(function devtoolsDetector() {
-    const threshold = 160;
-    let lastTime = performance.now();
-
-    function check() {
-        const start = performance.now();
-
-        setTimeout(() => {
-            requestAnimationFrame(() => {
-                const delta = performance.now() - start;
-                const delay = performance.now() - lastTime;
-
-                if (delta > threshold || delay > threshold * 2) {
-                    window.location = url;
-                }
-
-                lastTime = performance.now();
-                check();
-            });
-        }, 0);
-
-        try {
-            Function('debugger')();
-        } catch (e) {
-        }
+(function() {
+	let protectionTriggered = false;
+    function loadProtectedCode() {
+        const protectedLogic = function() {
+            console.log("Защищенный код выполнен");
+            
+            document.getElementById('secure-content').innerHTML = 
+                "Контент, защищенный от анализа";
+        };
+        
+        setTimeout(protectedLogic.toString() + ';protectedLogic();', 0);
     }
 
-    check();
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 500) {
-            window.location = url;
-        }
+    window.addEventListener('load', function() {
+        setTimeout(loadProtectedCode, 1000);
+        
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
     });
 
-    window.addEventListener('devtoolschange', function(e) {
-        if (e.detail.open) {
-            window.location = url;
+    const secureElements = {
+        getContentDiv: function() {
+            return document.getElementById('secure-content');
         }
+    };
+
+	let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
+    
+    const resizeObserver = new ResizeObserver(() => {
+        const widthDiff = Math.abs(window.innerWidth - lastWidth);
+        const heightDiff = Math.abs(window.innerHeight - lastHeight);
+        
+        if (widthDiff > 10 || heightDiff > 10) {
+            triggerProtection();
+        }
+        
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
     });
 
+	function triggerProtection() {
+        if (!protectionTriggered) {
+            protectionTriggered = true;
+            
+            window.location.href = "/videos/Righthere.mp4";
+        }
+    }
+    
+    resizeObserver.observe(document.body);
+    
+    Object.freeze(secureElements);
+    Object.freeze(window.__proto__);
 })();
