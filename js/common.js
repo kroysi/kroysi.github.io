@@ -46,7 +46,7 @@ function init() {
       data: {
         title: config.title,
         titleVisible: false,
-        copyrightTexts: '',
+        copyrightText: '',
         copyrightArray: Array.isArray(config.copyrightText) ? config.copyrightText : [config.copyrightText],
         lastCopyrightText: '',
         social: config.social,
