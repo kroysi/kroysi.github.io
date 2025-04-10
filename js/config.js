@@ -33,7 +33,12 @@ let config = {
 
 
   // Текст копирайта
-  copyrightText: 'get brain.',
+  copyrightText: [
+    'get brain.',
+    'blondes > all.',
+    'tryna drop? wish u luck.',
+    'java guru.',
+  ],
   // Цвет копирайта
   copyrightTextColor: '#0000CD',
 
