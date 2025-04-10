@@ -17,19 +17,19 @@ let config = {
 
 
   // Цвет иконки загрузки
-  preloaderColor: '#1E90FF',
+  preloaderColor: '#D50103',
 
 
   // Цвет кнопки play
-  playButtonColor: '#00BFFF',
+  playButtonColor: '#D50103',
   // Цвет тени кнопки play
-  playButtonShadowColor: 'rgba(255, 255, 255, 0.5)',
+  playButtonShadowColor: '#AB0E0A',
 
 
   // Цвет заголовка
-  titleColor: '#00BFFF',
+  titleColor: '#D50103',
   // Цвет тени загаловка
-  titleShadowColor: 'rgba(255, 255, 255, 0.5)',
+  titleShadowColor: '#AB0E0A',
 
 
   // Текст копирайта
@@ -40,10 +40,10 @@ let config = {
     'java guru.',
   ],
   // Цвет копирайта
-  copyrightTextColor: '#0000CD',
+  copyrightTextColor: '#D50103',
 
   // Цвет иконок социальных сетей
-  socialColor: '#00BFFF',
+  socialColor: '#D50103',
   // Цвет тени иконок социальных сетей
-  socialShadowColor: 'rgba(255, 255, 255, 0.5)',
+  socialShadowColor: '#AB0E0A',
 }
