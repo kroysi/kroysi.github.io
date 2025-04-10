@@ -143,10 +143,8 @@ function init() {
             this.copyrightEffectInterval = setInterval(() => {
               changeCopyright();
             }, 5000);
-
-    
           }, config.showDelay * 1000);
-          changeCopyright();
+        
         },
     
         getSocialLink(type, username) {
