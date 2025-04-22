@@ -3,7 +3,6 @@
 я сделал конфиг что бы ты мог менять данные
 
 */
-
 const awesomeEffect = dict => {
   let container = dict.el;
   let randomChars = "";
