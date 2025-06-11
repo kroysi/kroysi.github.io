@@ -35,7 +35,6 @@ let config = {
   // Текст копирайта
   copyrightText: [
     'get brain.',
-    'blondes > all.',
     'tryna drop? wish u luck.',
     'java guru.',
     'stay low, kroysi knows.',
@@ -43,7 +42,6 @@ let config = {
     'born to debug.',
     'game over before u start.',
     '100% brain, 0% mercy.',
-    'blondes still winning.',
     'try harder, fail louder.',
     'coded by kroysi. feared by many.',
     'reverse me? dream on.',
