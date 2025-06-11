@@ -11,8 +11,8 @@ let config = {
 
   // Социальные сети
   social: {
-    telegram_kroysi: '@kroysi',
-    vk_kroysi: 'kroysi',
+    telegram: '@kroysi',
+    vk: 'kroysi',
   }, 
 
 
