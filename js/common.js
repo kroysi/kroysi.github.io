@@ -72,6 +72,26 @@ function init() {
             let username = data.trim();
             return `https://vk.com/` + username;
           },
+
+          // steam(data) {
+          //   let username = data.trim();
+          //   return `https://steamcommunity.com/id/` + username;
+          // },
+
+          // soundcloud(data) {
+          //   let username = data.trim();
+          //   return `https://soundcloud.com/` + username;
+          // },
+
+          // instagram(data) {
+          //   let username = data.trim();
+          //   return `https://www.instagram.com/` + username;
+          // },
+
+          // twitch(data) {
+          //   let username = data.trim();
+          //   return `https://www.twitch.tv/` + username;
+          // },
         }
       },
 

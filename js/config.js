@@ -13,6 +13,10 @@ let config = {
   social: {
     telegram: '@kroysi',
     vk: 'kroysi',
+    // steam: 'kroysi',
+    // soundcloud: 'kroysi',
+    // instagram: 'kroysi',
+    // twitch: 'kroysi',
   }, 
 
 
@@ -47,7 +51,7 @@ let config = {
     'reverse me? dream on.',
     '404: skill not found.',
     'kroysi > you.',
-    'this ain’t Python. it works.',
+    'this ain’t python. it works.',
     'outcoded. outclassed. outplayed.',
     'built different. kroysi certified.',
     'no mercy, just kroysi.',
@@ -67,7 +71,7 @@ let config = {
     'stack overflowed. kroysi overloaded.',
     'your debugger cried.',
     'exec\'d by kroysi. denied by logic.',
-    'go play with Python, rookie.',
+    'go play with python, rookie.',
     'void main() { kroysi wins(); }',
     'code clean. attitude mean.',
     'you test. i break.',
