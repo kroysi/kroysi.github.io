@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF+2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>kroysi</title> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>kroysi</title>
     <script type="text/javascript">
       var _smartsupp = _smartsupp || {};
       _smartsupp.key = 'abdb2acec80ea34132ca339ac807669212a77b14';
-      window.smartsupp||(function(d) {
-        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-        c.type='text/javascript';c.charset='utf-8';c.async=true;
-        c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+      window.smartsupp || (function (d) {
+        var s, c, o = smartsupp = function () { o._.push(arguments) };
+        o._ = [];
+        s = d.getElementsByTagName('script')[0];
+        c = d.createElement('script');
+        c.type = 'text/javascript';
+        c.charset = 'utf-8';
+        c.async = true;
+        c.src = 'https://www.smartsuppchat.com/loader.js?';
+        s.parentNode.insertBefore(c, s);
       })(document);
     </script>
-	<meta name="description" content="Built by kroysi: your code’s trash, your skills won’t cut it, and trying to reverse this will only end in tears.">
+    <meta name="description" content="Built by kroysi: your code’s trash, your skills won’t cut it, and trying to reverse this will only end in tears.">
     <link rel="stylesheet" href="css/main.css" />
-	<link rel="shortcut icon" href="img/2.ico" type="image/ico">
+    <link rel="shortcut icon" href="img/2.ico" type="image/ico">
   </head>
   <body>
     <script src="js/promise-polyfill.js"></script>
@@ -31,9 +36,11 @@
 
       devtoolsDetector.launch();
     </script>
+
     <div class="preloader">
       <div class="preloader-circle PreloaderStyle"></div>
     </div>
+
     <div id="asif-page">
       <div class="wrapper">
         <div class="background">
@@ -43,21 +50,25 @@
             <source src="videos/Righthere3.mp4" type="video/mp4" />
           </video>
         </div>
+
         <div class="asif-page-copyright" :style="CopyRightStyle">
           {{ copyrightText }}
         </div>
-        <div class="container">       
+
+        <div class="container">
           <div class="asif-page-wrapper">
             <div class="asif-page-info">
               <div
                 class="asif-page-info-play"
-                :class=" { 'is-playing': isPlaying }"
+                :class="{ 'is-playing': isPlaying }"
                 :style="PlayButtonStyle"
                 @click="startPlay"
               >
                 Start
               </div>
+
               <div class="asif-page-info-logo"></div>
+
               <div
                 ref="title"
                 :class="{ 'title-visible': titleVisible }"
@@ -66,6 +77,7 @@
               >
                 {{ title }}
               </div>
+
               <div
                 class="asif-page-info-social"
                 :class="{ 'social-visible': titleVisible }"
@@ -84,8 +96,9 @@
         </div>
       </div>
     </div>
-	<script src="js/vue.js"></script>
-  <script src="js/config.js"></script>
-	<script src="js/common.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/common.js"></script>
   </body>
 </html>
