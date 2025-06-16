@@ -64,7 +64,6 @@ function init() {
         SOCIAL: {
           telegram(data) {
             let username = data.trim();
-            username = username.replace('@', '');
             return `https://t.me/` + username;
           },
     
