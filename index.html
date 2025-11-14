@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="js/html-guard.js"></script>
     <meta charset="UTF+2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -20,23 +21,27 @@
         s.parentNode.insertBefore(c, s);
       })(document);
     </script>
+    <script>
+        HtmlGuard.protections.antiDevTools();
+
+        HtmlGuard.protections.blockContextMenu();
+
+        HtmlGuard.protections.blockDrag();
+
+        HtmlGuard.protections.blockSelection();
+
+        HtmlGuard.protections.blockConsoleOutput();
+
+        HtmlGuard.loader.loadStyleByRef("css/main.css");
+
+        HtmlGuard.loader.loadScriptBySrc("js/vue.js");
+        HtmlGuard.loader.loadScriptBySrc("js/config.js");
+        HtmlGuard.loader.loadScriptBySrc("js/common.js");
+    </script>
     <meta name="description" content="Built by kroysi: your code’s trash, your skills won’t cut it, and trying to reverse this will only end in tears.">
-    <link rel="stylesheet" href="css/main.css" />
     <link rel="shortcut icon" href="img/2.ico" type="image/ico">
   </head>
   <body>
-    <script src="js/promise-polyfill.js"></script>
-    <script src="js/devtools-detector.js"></script>
-    <script>
-      devtoolsDetector.addListener(function (isOpen) {
-        if (isOpen) {
-          window.location.href = "/videos/Righthere.mp4";
-        }
-      });
-
-      devtoolsDetector.launch();
-    </script>
-
     <div class="preloader">
       <div class="preloader-circle PreloaderStyle"></div>
     </div>
@@ -96,9 +101,5 @@
         </div>
       </div>
     </div>
-
-    <script src="js/vue.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/common.js"></script>
   </body>
 </html>
