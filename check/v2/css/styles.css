@@ -574,7 +574,22 @@ th.sort-desc::after { content: " ↓"; opacity: 1; }
   height: 26px;
   border-radius: 8px;
   margin-bottom: 8px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+/* Фиксированные цвета для каждой темы */
+.theme-card[data-theme="theme-neon"] .swatch {
+  background: linear-gradient(90deg, #8a56ff, #27e1ff);
+}
+.theme-card[data-theme="theme-sunset"] .swatch {
+  background: linear-gradient(90deg, #ff6b6b, #ffcc70);
+}
+.theme-card[data-theme="theme-emerald"] .swatch {
+  background: linear-gradient(90deg, #29e0b7, #57ffa8);
+}
+.theme-card[data-theme="theme-ice"] .swatch {
+  background: linear-gradient(90deg, #58a4ff, #66ffd9);
+}
+.theme-card[data-theme="theme-snow"] .swatch {
+  background: linear-gradient(90deg, #2e7cf6, #0dc8cc);
 }
 .controls-row {
   display: grid;
