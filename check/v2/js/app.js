@@ -508,8 +508,18 @@
       const speedRange = $('#speedRange');
       speedRange.value = Particles.settings.speed;
       speedRange.addEventListener('input', e => {
-        Particles.updateSettings('speed', parseFloat(e.target.value));
-        Particles.particles.forEach(p => { p.vx *= 0.7; p.vy *= 0.7; });
+        const newSpeed = parseFloat(e.target.value);
+        const oldSpeed = Particles.settings.speed;
+        Particles.updateSettings('speed', newSpeed);
+        
+        // Масштабируем скорости пропорционально изменению
+        if (oldSpeed > 0) {
+          const ratio = newSpeed / oldSpeed;
+          Particles.particles.forEach(p => {
+            p.vx *= ratio;
+            p.vy *= ratio;
+          });
+        }
       });
       
       // Размер частиц
