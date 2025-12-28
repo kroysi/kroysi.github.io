@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tools</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <meta name="theme-color" content="#0b0f1a">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="theme-neon">
+  <canvas id="particles-canvas"></canvas>
+
+  <div id="copyToast" class="toast">
+    <i class="fa-solid fa-check"></i> Скопировано
+  </div>
+
+  <div id="appRoot" class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="logo" width="28" height="28" viewBox="0 0 64 64" role="img" aria-label="Logo" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="wrGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--accent)"></stop>
+              <stop offset="100%" stop-color="var(--accent-2)"></stop>
+            </linearGradient>
+            <filter id="wrShadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-opacity="0.45"></feDropShadow>
+            </filter>
+          </defs>
+          <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#wrGrad)"></rect>
+          <path d="M18 42 L28 32 L34 38 L46 26 L46 34 L50 34 L50 18 L34 18 L34 22 L42 22 L32 32 L26 26 L14 38 Z" fill="#081018" filter="url(#wrShadow)"></path>
+        </svg>
+        <h1>Tools</h1>
+      </div>
+
+      <div class="nav" id="nav">
+        <button data-tab="everything" class="active">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Everything</span>
+        </button>
+        <button data-tab="journal">
+          <i class="fa-solid fa-book"></i>
+          <span>Journal Trace</span>
+        </button>
+        <button data-tab="common">
+          <i class="fa-solid fa-code"></i>
+          <span class="stack-title">
+            <span>Общие</span>
+            <span>strings</span>
+          </span>
+        </button>
+        <button data-tab="mods">
+          <i class="fa-solid fa-table"></i>
+          <span>Таблица .jar/.dll</span>
+        </button>
+        <button data-tab="banned">
+          <i class="fa-solid fa-ban"></i>
+          <span>Запрещённые моды</span>
+        </button>
+      </div>
+
+      <div style="margin-top: 16px; border-top: 1px dashed var(--card-border); padding-top: 12px;">
+        <div class="small">Дата обновления: <span id="updatedAt">—</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="controls">
+          <div class="search">
+            <input id="searchInput" class="input" type="text" placeholder="Поиск (⌘/Ctrl + K)">
+          </div>
+          <button id="designBtn" class="btn">
+            <i class="fa-solid fa-palette"></i> Смена дизайна
+          </button>
+        </div>
+      </div>
+
+      <section id="content" class="panel">
+        <div class="section-title">
+          <h2 style="margin: 0; font-size: 18px;" id="sectionTitle">Everything 1.5 Search Patterns</h2>
+          <span class="badge">Фильтруйте или копируйте нужные элементы</span>
+        </div>
+
+        <!-- Контейнеры для данных (заполняются из JSON) -->
+        <div id="cards" class="cards compact"></div>
+        <div id="journalCards" class="cards hidden"></div>
+        <div id="columnsWrap" class="masonry hidden"></div>
+        
+        <div id="tableWrap" class="table-wrap hidden" aria-label="Таблица .jar/.dll">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable" data-index="0">Название</th>
+                <th class="sortable" data-index="1">Размер</th>
+                <th class="sortable" data-index="2">Проверка</th>
+                <th class="sortable" data-index="3">Комментарий</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        
+        <div id="modsGridWrap" class="mods-grid hidden"></div>
+      </section>
+
+      <div class="footer panel">
+        <div>Информация предоставлена в ознакомительных целях. Используйте с осторожностью.</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Модальное окно настроек дизайна -->
+  <div id="designModal" class="modal-backdrop hidden design-modal">
+    <div class="modal">
+      <h2><i class="fa-solid fa-palette"></i> Смена дизайна</h2>
+      
+      <div class="options" id="themeOptions">
+        <div class="theme-card active" data-theme="theme-neon"><div class="swatch"></div><div>Neon Night</div></div>
+        <div class="theme-card" data-theme="theme-sunset"><div class="swatch"></div><div>Sunset Pop</div></div>
+        <div class="theme-card" data-theme="theme-emerald"><div class="swatch"></div><div>Emerald Wave</div></div>
+        <div class="theme-card" data-theme="theme-ice"><div class="swatch"></div><div>Ice Aurora</div></div>
+        <div class="theme-card" data-theme="theme-snow"><div class="swatch"></div><div>Snow Light</div></div>
+      </div>
+      
+      <div class="controls-row">
+        <div>
+          <label class="small">Скорость частиц</label>
+          <input id="speedRange" class="range" type="range" min="0.5" max="6" step="0.1">
+        </div>
+        <div>
+          <label class="small">Размер частиц</label>
+          <input id="sizeRange" class="range" type="range" min="1" max="8" step="0.5">
+        </div>
+      </div>
+      
+      <div style="margin-top: 10px;">
+        <label class="small">Тип частиц</label>
+        <div id="shapeRow" class="shape-row">
+          <button class="shape-btn active" data-shape="circle">Круг</button>
+          <button class="shape-btn" data-shape="square">Квадрат</button>
+          <button class="shape-btn" data-shape="triangle">Треугольник</button>
+          <button class="shape-btn" data-shape="star">Звезда</button>
+          <button class="shape-btn" data-shape="hex">Шестиугольник</button>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end;">
+        <button id="closeDesign" class="btn ghost">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
