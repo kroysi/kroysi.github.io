@@ -66,11 +66,6 @@ function init() {
             let username = data.trim();
             return `https://t.me/` + username;
           },
-    
-          vk(data) {
-            let username = data.trim();
-            return `https://vk.com/` + username;
-          },
 
           steam(data) {
             let username = data.trim();

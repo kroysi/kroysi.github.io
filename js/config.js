@@ -12,7 +12,6 @@ let config = {
   // Социальные сети
   social: {
     telegram: 'kroysi',
-    vk: 'kroysi',
     // steam: 'kroysi',
     // soundcloud: 'kroysi',
     // instagram: 'kroysi',
