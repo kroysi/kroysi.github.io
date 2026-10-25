@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF+2" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>kroysi</title>
     <script type="text/javascript">
@@ -30,13 +30,11 @@
     <script>
       devtoolsDetector.addListener(function (isOpen) {
         if (isOpen) {
-          window.location.href = "/videos/Righthere.mp4";
+          window.location.href = "videos/Righthere.mp4";
         }
       });
-
       devtoolsDetector.launch();
     </script>
-
     <div class="preloader">
       <div class="preloader-circle PreloaderStyle"></div>
     </div>
@@ -44,10 +42,8 @@
     <div id="asif-page">
       <div class="wrapper">
         <div class="background">
-          <video preload muted ref="background-video" id="background-video" onloadeddata="volume=0.3">
+          <video preload="metadata" muted playsinline webkit-playsinline ref="background-video" id="background-video" onloadeddata="volume=0.3">
             <source src="videos/Righthere.mp4" type="video/mp4" />
-            <source src="videos/Righthere2.mp4" type="video/mp4" />
-            <source src="videos/Righthere3.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -58,14 +54,17 @@
         <div class="container">
           <div class="asif-page-wrapper">
             <div class="asif-page-info">
-              <div
+              <button
+                type="button"
+                :disabled="isStarting"
                 class="asif-page-info-play"
                 :class="{ 'is-playing': isPlaying }"
                 :style="PlayButtonStyle"
                 @click="startPlay"
               >
                 Start
-              </div>
+              </button>
+              <p v-if="playError" class="play-error" role="alert">{{ playError }}</p>
 
               <div class="asif-page-info-logo"></div>
 

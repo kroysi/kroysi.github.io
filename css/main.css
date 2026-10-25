@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=VT323&amp;display=swap");
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
 @font-face {
   font-family: "HelveticaNeueCyr-Black";
   src: url("../assets/fonts/HelveticaNeueCyr/Black/HelveticaNeueCyr-Black.html");
@@ -264,12 +264,13 @@ body {
 }
 
 .asif-page-copyright {
+  position: relative;
   top: 0px;
   left: 0px;
   color: #1E90FF;
   font-size: 1rem;
   font-family: "VT323";
-  z-index: -99;
+  z-index: 0;
 }
 
 .asif-page-wrapper {
@@ -439,4 +440,94 @@ body {
     font-size: 2rem;
   }
 }
-/*# sourceMappingURL=main.css.map */
+body {
+  background: #000;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background video {
+  min-width: 0;
+  min-height: 0;
+  z-index: auto;
+}
+
+.asif-page-info-play {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 1;
+  min-height: 100px;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+
+.asif-page-info-play.is-playing {
+  min-height: 0;
+}
+
+.asif-page-info-play:focus-visible,
+.asif-page-info-social-item:focus-visible {
+  outline: 2px solid #D50103;
+  outline-offset: 6px;
+}
+
+.play-error {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  .wrapper {
+    min-height: 100svh;
+  }
+
+  .asif-page-wrapper {
+    height: auto;
+    min-height: calc(100svh - 64px);
+    box-sizing: border-box;
+    padding: 24px max(20px, env(safe-area-inset-right)) 24px max(20px, env(safe-area-inset-left));
+  }
+
+  .asif-page-info-play {
+    font-size: clamp(4rem, 20vw, 6rem);
+  }
+
+  .asif-page-info-title {
+    font-size: clamp(3rem, 16vw, 5rem);
+    overflow-wrap: anywhere;
+  }
+
+  .asif-page-copyright {
+    padding: max(12px, env(safe-area-inset-top)) 16px 0;
+    min-height: 40px;
+    overflow-wrap: anywhere;
+  }
+
+  .asif-page-info-social {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .asif-page-info-social-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

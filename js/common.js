@@ -50,6 +50,8 @@ function init() {
         lastCopyrightText: '',
         social: config.social,
         isPlaying: false,
+        isStarting: false,
+        playError: '',
         titleEffectInterval: null,
         copyrightEffectInterval: null,
         titleColor: config.titleColor,
@@ -95,12 +97,23 @@ function init() {
           this.titleVisible = false;
         },
     
-        startPlay() {
+        async startPlay() {
+          if (this.isStarting || this.isPlaying) return;
+          this.isStarting = true;
+          this.playError = '';
           let video = this.$refs['background-video'];
           let title = this.$refs['title'];
         
-          this.$refs['background-video'].play();
-          this.$refs['background-video'].muted = false;
+          video.muted = false;
+          video.volume = 0.3;
+          try {
+            await video.play();
+          } catch (error) {
+            this.playError = 'Video could not start. Tap Start to try again.';
+            return;
+          } finally {
+            this.isStarting = false;
+          }
           this.isPlaying = true;
         
           setTimeout(() => {
